@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhaotumn1vx8e"]
+
+[ext_resource type="Script" path="res://Collectibles/Banana.gd" id="1_7hdgm"]
+[ext_resource type="Texture2D" uid="uid://bfrvjksku6b1v" path="res://Sunny-land-files/Graphical Assets/sprites/Banana/Sprite-0003.png" id="1_b8d3m"]
+[ext_resource type="Texture2D" uid="uid://br2oba7wm2q34" path="res://Sunny-land-files/Graphical Assets/sprites/Banana/Sprite-0004.png" id="2_o1o81"]
+[ext_resource type="Texture2D" uid="uid://b88bqca6f7a5x" path="res://Sunny-land-files/Graphical Assets/sprites/Banana/Sprite-0005.png" id="3_fnbrj"]
+[ext_resource type="Texture2D" uid="uid://csq3nnhr0xw0e" path="res://Sunny-land-files/Graphical Assets/sprites/Banana/Sprite-0006.png" id="4_6xi70"]
+[ext_resource type="Texture2D" uid="uid://dgammgnlnq8rh" path="res://Sunny-land-files/Graphical Assets/sprites/Banana/Sprite-0007.png" id="5_oy6e0"]
+[ext_resource type="Texture2D" uid="uid://bv8cjvi77hueq" path="res://Sunny-land-files/Graphical Assets/sprites/Banana/Sprite-0008.png" id="6_v8kyg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pft0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b8d3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o1o81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fnbrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6xi70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oy6e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v8kyg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anlbd"]
+radius = 5.0
+
+[node name="Banana" type="Area2D"]
+script = ExtResource("1_7hdgm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pft0f")
+animation = &"Idle"
+frame_progress = 0.334613
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_anlbd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

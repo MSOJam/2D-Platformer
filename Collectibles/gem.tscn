@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6droi2slx6jx"]
+
+[ext_resource type="Script" path="res://Collectibles/Gem.gd" id="1_3jtbd"]
+[ext_resource type="Texture2D" uid="uid://bhkep1j4dgivj" path="res://Sunny-land-files/Graphical Assets/sprites/gem/gem-1.png" id="1_kcvt2"]
+[ext_resource type="Texture2D" uid="uid://jh00vpu7lses" path="res://Sunny-land-files/Graphical Assets/sprites/gem/gem-2.png" id="2_ar3go"]
+[ext_resource type="Texture2D" uid="uid://cggpru0dx3s8c" path="res://Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-1.png" id="2_eb54d"]
+[ext_resource type="Texture2D" uid="uid://c8pnp5xj6n618" path="res://Sunny-land-files/Graphical Assets/sprites/gem/gem-3.png" id="3_bv537"]
+[ext_resource type="Texture2D" uid="uid://dirqkryaot42i" path="res://Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-2.png" id="3_r4k0h"]
+[ext_resource type="Texture2D" uid="uid://cpnqv5igtt1fb" path="res://Sunny-land-files/Graphical Assets/sprites/gem/gem-4.png" id="4_7xrda"]
+[ext_resource type="Texture2D" uid="uid://cbum7i21rpgnf" path="res://Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-3.png" id="4_bp8cm"]
+[ext_resource type="Texture2D" uid="uid://bkako6qxyu285" path="res://Sunny-land-files/Graphical Assets/sprites/gem/gem-5.png" id="5_0hc7p"]
+[ext_resource type="Texture2D" uid="uid://cpun1p2i8li2n" path="res://Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-4.png" id="5_lxucs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_is5cu"]
+radius = 13.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3b0ue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eb54d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r4k0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bp8cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lxucs")
+}],
+"loop": false,
+"name": &"Collected",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kcvt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ar3go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bv537")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7xrda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0hc7p")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Gem" type="Area2D"]
+script = ExtResource("1_3jtbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_is5cu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3b0ue")
+animation = &"Idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

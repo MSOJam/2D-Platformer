@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmluli8nmrygq"]
+
+[ext_resource type="PackedScene" uid="uid://dqfewra5v7sny" path="res://BG.tscn" id="1_175pp"]
+[ext_resource type="Script" path="res://victory.gd" id="1_rgl47"]
+[ext_resource type="Texture2D" uid="uid://c7a74h0g5nncx" path="res://sunny-land/assets/sprites/title-screen.png" id="2_kv3q2"]
+
+[node name="Victory" type="Node2D"]
+script = ExtResource("1_rgl47")
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 425.0
+offset_top = 350.0
+offset_right = 725.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(0.952941, 0.72549, 0.286275, 1)
+theme_override_colors/font_hover_color = Color(0.917647, 0.411765, 0.227451, 1)
+theme_override_colors/font_outline_color = Color(0.192157, 0.176471, 0.254902, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_175pp")]
+
+[node name="Title-screen" type="Sprite2D" parent="."]
+position = Vector2(582, 121)
+scale = Vector2(4, 4)
+texture = ExtResource("2_kv3q2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 195.0
+offset_top = 208.0
+offset_right = 963.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0.921569, 0.729412, 0.368627, 1)
+theme_override_colors/font_shadow_color = Color(0.192157, 0.176471, 0.254902, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 70
+text = "Congratulations :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
